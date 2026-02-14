@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <input type = "text" name = "username" placeholder="Enter your name">
+    <input type = "text" name = "age" placeholder = "Enter you age">
+    <button id = "btn" onclick="display();
+    Send();">
+        Add 
+    </button>
+
+</body>
+<script>
+    let id = 200;
+    const nameInput = document.querySelector('input[name="username"]');
+    const ageInput = document.querySelector('input[name="age"]');
+    function display(){
+        console.log(nameInput.value);
+        console.log(ageInput.value);
+    }
+    async function Send(){
+        id++;
+        let obj = {
+            name : nameInput.value,
+            age : Number(ageInput.value)
+        };
+        console.log(obj);
+        try {
+            const res = await fetch(`http://localhost:4000/acc/user/${id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(obj)
+            });
+
+            const data = await res.json();
+
+            console.log("Response:", data);
+        } catch (err) {
+            console.error("Error:", err);
+        }
+    }
+</script>
+</html>
