@@ -2,7 +2,7 @@ const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 let _db;
 
-const url = "mongodb+srv://root:root@cluster0.y6n2ofo.mongodb.net/?appName=Cluster0";
+const url = "<Mondo DB URL>";
 
 const mongoConnect = (callback) => {
     MongoClient.connect(url)
