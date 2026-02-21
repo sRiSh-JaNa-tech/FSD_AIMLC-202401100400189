@@ -13,8 +13,9 @@ app.use(express.json());    //to parse JSON bodies
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB is now Connected"))
-  .catch((err) => console.log(err));
+.then(()=>{
+  console.log("Connected to MongoDB");
+}).catch( e => {console.error(e)});
 
   
 app.use("/api", employeeRoutes);
